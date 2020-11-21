@@ -1,0 +1,40 @@
+server:
+  undertow:
+    buffer-size: 1024
+    direct-buffers: true
+  port: 8080
+  servlet:
+    context-path: /cmic
+
+spring:
+  profiles:
+    #active: ${ACTIVE_PROFILES}
+    active: dev
+  application:
+    name: short-url-api
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          client: info
+      apache: info
+  file:
+    name: ./log/short-url-api.log
+
+datasource:
+  type: com.alibaba.druid.pool.DruidDataSource
+  driverClassName: com.mysql.cj.jdbc.Driver
+  # jackson格式初始化
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto

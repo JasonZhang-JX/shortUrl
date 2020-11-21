@@ -1,0 +1,40 @@
+server:
+  undertow:
+    threads:
+      io: 2
+      worker: 20
+
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/short_url?useSSL=false&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: ShortUrl
+    password: ShortUrl@123
+    druid:
+      initial-size: 1 #连接池初始化大小
+      min-idle: 1 #连接池最小
+      max-active: 10  #连接池最大
+      max-wait: 60000  #等待连接超时时间
+      time-between-eviction-runs-millis: 2000 #检测需要关闭空闲连接的间隔时间
+      min-evictable-idle-time-millis: 600000  #连接最小生存时间
+      max-evictable-idle-time-millis: 900000 #连接最大生存时间
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true  #打开PSCache，并且指定每个连接上PSCache的大小
+      max-pool-prepared-statement-per-connection-size: 20
+      keep-alive: true
+
+  redis: #Redis
+    timeout: 60000
+    lettuce:
+      pool:
+        max-idle: 1 #最大空闲连接
+        min-idle: 0 #最小空闲连接
+        max-active: 100  #最大连接数
+        max-wait: -1 #最大阻塞等待时间
+    cluster:
+      nodes: 127.0.0.1:7001
+
+short-config:
+  baseUrl: http://localhost:8080/short/re/

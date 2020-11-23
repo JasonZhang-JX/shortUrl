@@ -35,31 +35,6 @@ public class ShortUrlLists implements Serializable {
     private Integer id;
 
     /**
-     * 二维码链接uuid
-     */
-    private String qrCodeUuid;
-
-    /**
-     * 二维码图片
-     */
-    private String qrCodePic;
-
-    /**
-     * 二维码到期时间，格式:EEE, d MMM yyyy HH:mm:ss GMT
-     */
-    private String expires;
-
-    /**
-     * 过期时间 时间格式yyyy-MM-dd HH:mm:ss
-     */
-    private String expireDate;
-
-    /**
-     * 群uri
-     */
-    private String groupUri;
-
-    /**
      * 二维码对应的url
      */
     private String qrCodeUrl;
